@@ -4,6 +4,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Register from "./Pages/Auth/Register";
 import Login from "./Pages/Auth/Login";
 import Home from "./Pages/Home/Home";
+import { Toaster } from "react-hot-toast";
+
+
+
 
 function App() {
   return (
@@ -22,6 +26,7 @@ function App() {
         pauseOnHover
         draggable
       />
+     
     </Router>
   );
 }

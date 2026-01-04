@@ -9,7 +9,7 @@ const Home = () => {
   
 
   return (
-    <div className="min-h-screen bg-base-100">
+    <div className="min-h-screen bg-base-200 text-base-content">
       <title>Home | Plateshare</title>
     
       <HeroSection></HeroSection>

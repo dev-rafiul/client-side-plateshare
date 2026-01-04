@@ -1,37 +1,72 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
 
+
+
+   // 🌙 Dark mode state
+  const [theme, setTheme] = useState(
+    localStorage.getItem("theme") || "light"
+  );
+
+  // Apply theme to HTML
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
+
+
+useEffect(() => {
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("theme", theme);
+}, [theme]);
+
+
+
+const navLinkStyle = ({ isActive }) =>
+  `relative px-3 py-2 font-bold text-[#ac7800] hover:text-[#8d5751]
+   after:absolute after:left-1/2 after:-bottom-1
+   after:h-[3px] after:bg-gradient-to-r after:from-amber-900 after:via-orange-300 after:to-rose-900
+   after:transition-all after:duration-300 after:ease-out
+   after:-translate-x-1/2
+   ${isActive
+     ? "after:w-full after:h-[3px]"
+     : "after:w-0 hover:after:w-full"}`;
+
+
+
   const links = (
     <>
-      <NavLink to="/" className="hover:text-[#8d5751] p-3 text-[#ac7800] font-bold">
+      <NavLink to="/" 
+      className={navLinkStyle}
+      >
         Home
       </NavLink>
-      <NavLink to="/availableFoods" className="hover:text-[#8d5751] font-bold p-3 text-[#ac7800]">
+      <NavLink to="/availableFoods" 
+       className={navLinkStyle}
+      
+      >
         Available Foods
       </NavLink>
-
-      {user && (
-        <>
-          {/* <NavLink to="/add-Food" className="hover:text-primary">
-            Add Food
-          </NavLink>
-          <NavLink to="/manage-my-foods" className="hover:text-primary">
-            Manage My Foods
-          </NavLink>
-          <NavLink to="/my-food-request" className="hover:text-primary">
-            My Food Requests
-          </NavLink> */}
-        </>
-      )}
     </>
   );
 
   return (
-    <div className="navbar bg-[#fef9ee] shadow-sm sticky top-0 z-50">
+    // <div 
+    // className="navbar bg-[#fef9ee] shadow-sm sticky top-0 z-50"
+    // >
+    <div className="navbar bg-base-100 text-base-content shadow-sm sticky top-0 z-50">
+
+
       
       <div className="navbar-start">
         <div className="dropdown">
@@ -74,6 +109,57 @@ const Navbar = () => {
 
       
       <div className="navbar-end flex gap-2">
+        
+
+
+<motion.button
+  onClick={toggleTheme}
+  className="relative w-12 h-12 rounded-full flex items-center justify-center
+             bg-base-200 hover:bg-base-300 shadow-md"
+  whileTap={{ scale: 0.85 }}
+  transition={{ type: "spring", stiffness: 500, damping: 25 }}
+>
+
+  <AnimatePresence mode="wait">
+    {theme === "light" ? (
+      <motion.svg
+        key="sun"
+        initial={{ rotate: -90, scale: 0.5, opacity: 0 }}
+        animate={{ rotate: 0, scale: 1, opacity: 1 }}
+        exit={{ rotate: 90, scale: 0.5, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        className="w-7 h-7 text-amber-500"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+      >
+        <path d="M5.64 17.657A9 9 0 1118.36 6.343 9 9 0 015.64 17.657z" />
+      </motion.svg>
+    ) : (
+      <motion.svg
+        key="moon"
+        initial={{ rotate: 90, scale: 0.5, opacity: 0 }}
+        animate={{ rotate: 0, scale: 1.1, opacity: 1 }}
+        exit={{ rotate: -90, scale: 0.5, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        className="w-7 h-7 text-sky-400"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+      >
+        <path d="M21.64 13.64A9 9 0 1110.36 2.36 7 7 0 0021.64 13.64z" />
+      </motion.svg>
+    )}
+  </AnimatePresence>
+</motion.button>
+
+
+
+
+
+
+
+
+
+
         {!user ? (
           <>
             <NavLink to="/login" className="btn hover:bg-amber-100 bg-[#ebc15e]">

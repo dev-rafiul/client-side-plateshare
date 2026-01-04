@@ -5,7 +5,6 @@ import Swal from "sweetalert2";
 
 const API = "http://localhost:3000";
 
-
 const FoodRequestsTable = ({ foodId, onStatusUpdate }) => {
   const { user } = useContext(AuthContext);
   const [requests, setRequests] = useState([]);
@@ -18,13 +17,14 @@ const FoodRequestsTable = ({ foodId, onStatusUpdate }) => {
     axios
       .get(`${API}/food-requests/${foodId}`)
       .then((res) => {
-        
         const list = (res.data || []).map((r) => ({
           ...r,
-        
+
           requesterName: r.requesterName || r.name || r.requester_name || "",
-          requesterEmail: r.requesterEmail || r.requester_email || r.email || "",
-          requesterPhoto: r.requesterPhoto || r.requester_photo || r.photoURL || "",
+          requesterEmail:
+            r.requesterEmail || r.requester_email || r.email || "",
+          requesterPhoto:
+            r.requesterPhoto || r.requester_photo || r.photoURL || "",
         }));
         setRequests(list);
       })
@@ -57,17 +57,19 @@ const FoodRequestsTable = ({ foodId, onStatusUpdate }) => {
         foodId,
       });
 
-      
       setRequests((prev) =>
         prev.map((r) =>
           r._id === requestId ? { ...r, status: "accepted" } : r
         )
       );
 
-      
       if (onStatusUpdate) onStatusUpdate("accepted");
 
-      Swal.fire("Accepted", "Request accepted & food marked donated", "success");
+      Swal.fire(
+        "Accepted",
+        "Request accepted & food marked donated",
+        "success"
+      );
     } catch (err) {
       console.error(err);
       Swal.fire("Failed to accept", "", "error");
@@ -114,7 +116,7 @@ const FoodRequestsTable = ({ foodId, onStatusUpdate }) => {
       <table className="table w-full">
         <thead className="bg-base-200">
           <tr>
-            <th>User</th>
+            {/* <th>User</th> */}
             <th>Location</th>
             <th>Reason</th>
             <th>Contact</th>
@@ -133,8 +135,12 @@ const FoodRequestsTable = ({ foodId, onStatusUpdate }) => {
                   className="w-10 h-10 rounded-full object-cover"
                 />
                 <div>
-                  <div className="font-medium">{req.requesterName || req.name || "Unknown"}</div>
-                  <div className="text-xs text-gray-500">{req.requesterEmail || ""}</div>
+                  <div className="font-medium">
+                    {req.requesterName || req.name || "Unknown"}
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    {req.requesterEmail || ""}
+                  </div>
                 </div>
               </td>
 

@@ -36,7 +36,7 @@ const AvailableFoods = () => {
         <input
           type="text"
           placeholder="Search your foods..."
-          className="input input-bordered w-full max-w-md rounded-full px-5 py-2"
+          className="input w-full max-w-md border-none rounded-full px-5 py-2"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />

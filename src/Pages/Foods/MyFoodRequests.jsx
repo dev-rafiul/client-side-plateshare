@@ -1,5 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
+import toast from "react-hot-toast";
+import { CheckCircle, XCircle } from "lucide-react";
+
 
 const MyFoodRequests = () => {
   const { user } = useContext(AuthContext);
@@ -24,24 +27,59 @@ const MyFoodRequests = () => {
       });
   }, [user]);
 
-  const handleStatusChange = (id, action) => {
-    const newStatus = action === "accept" ? "donated" : "rejected";
 
-    fetch(`https://plateshare-server-mu.vercel.app/food-requests/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ status: newStatus }),
-    })
-      .then((res) => res.json())
-      .then(() => {
+
+const handleStatusChange = (id, action) => {
+  const newStatus = action === "accept" ? "donated" : "rejected";
+
+  const loadingToast = toast.loading("Updating request...");
+
+  fetch(`https://plateshare-server-mu.vercel.app/food-requests/${id}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ status: newStatus }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.modifiedCount > 0) {
         setRequests((prev) =>
           prev.map((req) =>
             req._id === id ? { ...req, status: newStatus } : req
           )
         );
-      })
-      .catch((err) => console.error("Update failed:", err));
-  };
+
+        toast.dismiss(loadingToast);
+
+        if (action === "accept") {
+          toast.custom(
+            <div className="flex items-center gap-2 bg-white px-4 py-3 rounded-lg shadow-md">
+              <CheckCircle className="text-green-500 w-5 h-5" />
+              <span className="font-medium">
+                Request accepted successfully
+              </span>
+            </div>
+          );
+        } else {
+          toast.custom(
+            <div className="flex items-center gap-2 bg-white px-4 py-3 rounded-lg shadow-md border">
+              <XCircle className="text-red-500 w-5 h-5" />
+              <span className="font-medium">
+                Request rejected
+              </span>
+            </div>
+          );
+        }
+      }
+    })
+    .catch(() => {
+      toast.dismiss(loadingToast);
+      toast.error("Failed to update request 😢");
+    });
+};
+
+
+
+
 
   const getStatusBadge = (status) => {
     if (status === "pending") return "badge badge-warning";
@@ -87,7 +125,7 @@ const MyFoodRequests = () => {
                         <div className="mask mask-squircle w-12 h-12">
                           <img
                             src={
-                              req.photoURL ||
+                              req.requesterPhoto ||
                               "https://i.ibb.co/0j1V6Tc/default-avatar.png"
                             }
                             alt={req.name}
@@ -143,6 +181,8 @@ const MyFoodRequests = () => {
           </table>
         </div>
       )}
+      
+
     </div>
   );
 };
