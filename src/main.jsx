@@ -7,7 +7,7 @@ import { RouterProvider } from "react-router";
 import { router } from "./routes/router";
 import { AuthProvider } from "./Context/AuthProvider.jsx";
 
-// Toast Import
+
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Toaster } from "react-hot-toast";
