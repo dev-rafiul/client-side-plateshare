@@ -201,3 +201,5 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-neutral;
 }
+/* Additional theme fixes for better compatibility */
+/* [data-theme="plateshare_dark"] */

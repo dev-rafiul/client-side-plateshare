@@ -46,11 +46,11 @@ const AddFood = () => {
   };
 
   return (
-    <div className="max-w-2xl mx-auto my-12 p-8 bg-white rounded-xl shadow-lg">
+    <div className="max-w-2xl mx-auto my-12 p-8 rounded-xl shadow-lg">
       <title>Add Food | Plateshare</title>
       <h2 className="text-3xl font-bold text-center mb-8">Add New Food</h2>
 
-      <form onSubmit={handleSubmit} className="space-y-5">
+      <form onSubmit={handleSubmit} className="space-y-5 text-black">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <label className="-mb-3">Food Name :</label>
           <input

@@ -32,7 +32,7 @@ const HowItWorks = () => {
     <section className="py-20 bg-base-100">
       
       <div className="text-center mb-4">
-        <span className="px-4 py-1 bg-primary bg-opacity-20 text-primary rounded-full text-sm font-medium">
+        <span className="px-4 py-1 bg-primary bg-opacity-20 text-white rounded-full text-sm font-medium">
           How it works
         </span>
       </div>

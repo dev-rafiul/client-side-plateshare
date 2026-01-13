@@ -192,11 +192,11 @@ const FoodDetails = () => {
       
       {openRequestModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
-          <div className="bg-white w-full max-w-md rounded-lg p-6 mx-4">
+          <div className="w-full max-w-md rounded-lg p-6 mx-4">
             <h3 className="text-lg font-semibold mb-3">Request Food</h3>
-            <form onSubmit={submitRequest} className="space-y-3">
-              <div>
-                <label className="text-sm font-medium">Location</label>
+            <form onSubmit={submitRequest} className="space-y-3 text-black">
+              <div className="">
+                <label className="text-sm font-medium text-base-100">Location</label>
                 <input
                   type="text"
                   value={locationInput}
@@ -208,7 +208,7 @@ const FoodDetails = () => {
               </div>
 
               <div>
-                <label className="text-sm font-medium">Why Need Food</label>
+                <label className="text-sm font-medium text-base-100">Why Need Food</label>
                 <textarea
                   value={reasonInput}
                   onChange={(e) => setReasonInput(e.target.value)}
@@ -220,7 +220,7 @@ const FoodDetails = () => {
               </div>
 
               <div>
-                <label className="text-sm font-medium">Contact No.</label>
+                <label className="text-sm font-medium text-base-200">Contact No.</label>
                 <input
                   type="text"
                   value={contactInput}
@@ -235,13 +235,13 @@ const FoodDetails = () => {
                 <button
                   type="button"
                   onClick={() => setOpenRequestModal(false)}
-                  className="btn btn-ghost"
+                  className="btn btn-ghost text-white"
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="btn btn-primary"
+                  className="btn btn-primary text-white"
                   disabled={submitting}
                 >
                   {submitting ? "Sending..." : "Submit Request"}

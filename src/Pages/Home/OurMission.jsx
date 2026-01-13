@@ -23,7 +23,7 @@ const OurMission = () => {
   return (
     <section className="py-16 bg-base-100">
       <div className="text-center mb-4">
-        <span className="px-4 py-1 bg-primary bg-opacity-20 text-primary rounded-full text-sm font-medium">
+        <span className="px-4 py-1 bg-primary bg-opacity-20 text-white rounded-full text-sm font-medium">
           Our Mission
         </span>
       </div>
@@ -45,7 +45,7 @@ const OurMission = () => {
             className="bg-base-200 p-8 rounded-2xl border border-base-300
                        shadow-lg text-center"
           >
-            <div className="text-3xl bg-primary text-primary-content mx-auto w-20 h-20 font-semibold flex justify-center items-center rounded-full mb-4">{item.icon}</div>
+            <div className="text-3xl bg-primary text-primary-content mx-auto w-[150px] h-[150px] font-semibold flex justify-center items-center rounded-[100px] mb-4">{item.icon}</div>
             <h3 className="text-xl font-semibold mb-2 text-base-content">{item.title}</h3>
             <p className="text-base-content opacity-70 text-sm leading-relaxed">
               {item.desc}
