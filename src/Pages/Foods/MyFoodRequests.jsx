@@ -104,7 +104,7 @@ const handleStatusChange = (id, action) => {
         </div>
       ) : (
         <div className="overflow-x-auto shadow-lg rounded-lg">
-          <table className="table w-full table-zebra">
+          <table className="table w-full">
             <thead className="bg-base-200">
               <tr>
                 <th>User</th>

@@ -1,10 +1,203 @@
 @import "react-toastify/dist/ReactToastify.css";
-@import "tailwindcss";
-@plugin "daisyui"{
-  themes: light --default;
- }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* Design System Base Styles */
+body {
+  font-family: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
- body {
-  font-family: "Poppins", sans-serif;
+/* Ensure all sections inherit theme colors */
+section, div, main {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Force theme colors on all base elements */
+[data-theme="plateshare_dark"] * {
+  --tw-bg-opacity: 1;
+}
+
+[data-theme="plateshare_light"] * {
+  --tw-bg-opacity: 1;
+}
+
+/* Custom Design System Utilities */
+@layer utilities {
+  /* Consistent spacing utilities */
+  .space-section {
+    @apply py-12 lg:py-16;
+  }
+  
+  .space-container {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Card system utilities */
+  .card-base {
+    @apply bg-base-100 border border-base-200 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300;
+  }
+  
+  .card-grid {
+    @apply grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4;
+  }
+  
+  /* Button system utilities */
+  .btn-primary-custom {
+    @apply btn btn-primary hover:scale-105 transition-transform duration-200;
+  }
+  
+  .btn-secondary-custom {
+    @apply btn btn-secondary hover:scale-105 transition-transform duration-200;
+  }
+  
+  /* Text utilities for consistent typography */
+  .text-heading-1 {
+    @apply text-4xl lg:text-5xl font-bold text-base-content;
+  }
+  
+  .text-heading-2 {
+    @apply text-3xl lg:text-4xl font-semibold text-base-content;
+  }
+  
+  .text-heading-3 {
+    @apply text-2xl lg:text-3xl font-semibold text-base-content;
+  }
+  
+  .text-body {
+    @apply text-base text-base-content opacity-80 leading-relaxed;
+  }
+  
+  .text-caption {
+    @apply text-sm text-base-content opacity-60;
+  }
+  
+  /* Loading state utilities */
+  .skeleton-base {
+    @apply animate-pulse bg-base-300 rounded;
+  }
+  
+  .loading-overlay {
+    @apply fixed inset-0 bg-base-100 bg-opacity-80 backdrop-blur-sm flex items-center justify-center z-50;
+  }
+  
+  /* Focus utilities for accessibility */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-base-100;
+  }
+  
+  /* Touch target utilities for mobile */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px] flex items-center justify-center;
+  }
+}
+
+/* Theme-specific customizations */
+[data-theme="plateshare_light"] {
+  color-scheme: light;
+}
+
+[data-theme="plateshare_dark"] {
+  color-scheme: dark;
+}
+
+/* Force theme application on root elements */
+html[data-theme="plateshare_dark"] {
+  background-color: #1f1f1f !important;
+  color: #ffffff !important;
+}
+
+html[data-theme="plateshare_light"] {
+  background-color: #ffffff !important;
+  color: #171717 !important;
+}
+
+body {
+  background-color: inherit !important;
+  color: inherit !important;
+}
+
+/* Force DaisyUI theme variables to apply correctly */
+[data-theme="plateshare_dark"] {
+  --fallback-b1: #1f1f1f;
+  --fallback-b2: #2a2a2a;
+  --fallback-b3: #3a3a3a;
+  --fallback-bc: #ffffff;
+  --b1: #1f1f1f;
+  --b2: #2a2a2a;
+  --b3: #3a3a3a;
+  --bc: #ffffff;
+}
+
+[data-theme="plateshare_light"] {
+  --fallback-b1: #ffffff;
+  --fallback-b2: #f5f5f5;
+  --fallback-b3: #e5e5e5;
+  --fallback-bc: #171717;
+  --b1: #ffffff;
+  --b2: #f5f5f5;
+  --b3: #e5e5e5;
+  --bc: #171717;
+}
+
+/* Ensure all bg-base-* classes work properly */
+[data-theme="plateshare_dark"] .bg-base-100 {
+  background-color: #1f1f1f !important;
+}
+
+[data-theme="plateshare_dark"] .bg-base-200 {
+  background-color: #2a2a2a !important;
+}
+
+[data-theme="plateshare_dark"] .bg-base-300 {
+  background-color: #3a3a3a !important;
+}
+
+[data-theme="plateshare_light"] .bg-base-100 {
+  background-color: #ffffff !important;
+}
+
+[data-theme="plateshare_light"] .bg-base-200 {
+  background-color: #f5f5f5 !important;
+}
+
+[data-theme="plateshare_light"] .bg-base-300 {
+  background-color: #e5e5e5 !important;
+}
+
+/* Ensure text colors work properly */
+[data-theme="plateshare_dark"] .text-base-content {
+  color: #ffffff !important;
+}
+
+[data-theme="plateshare_light"] .text-base-content {
+  color: #171717 !important;
+}
+
+/* Smooth theme transitions */
+* {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Custom scrollbar for better UX */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-base-200;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-base-300 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-neutral;
 }

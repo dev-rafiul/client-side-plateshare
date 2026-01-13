@@ -30,7 +30,7 @@ const FeaturedProducts = () => {
   if (loading) {
     return (
       <section className="my-16 px-6 md:px-10 text-center">
-        <p className="text-gray-500">Loading featured foods...</p>
+        <p className="text-base-content opacity-60">Loading featured foods...</p>
       </section>
     );
   }
@@ -38,23 +38,23 @@ const FeaturedProducts = () => {
   if (!foods.length) {
     return (
       <section className="my-16 px-6 md:px-10 text-center">
-        <p className="text-gray-500">No featured foods available.</p>
+        <p className="text-base-content opacity-60">No featured foods available.</p>
       </section>
     );
   }
 
   return (
-    <section className="my-16 px-6 md:px-10 max-w-7xl mx-auto">
+    <section className="my-16 px-6 md:px-10 max-w-7xl mx-auto bg-base-100">
       <div className="text-center mb-4">
-        <span className="px-4 py-1 bg-orange-100 text-orange-500 rounded-full text-sm font-medium">
+        <span className="px-4 py-1 bg-primary bg-opacity-20 text-white rounded-full text-sm font-medium">
           🍛 Featured Foods
         </span>
       </div>
-      <h2 className="text-3xl font-bold text-center mb-3">
-        Discover our <span className="text-orange-500">Handpicked</span> meals
+      <h2 className="text-3xl font-bold text-center mb-3 text-base-content">
+        Discover our <span className="text-primary">Handpicked</span> meals
         ready
       </h2>
-      <p className="text-center text-gray-500 max-w-xl mx-auto mb-14">
+      <p className="text-center text-base-content opacity-60 max-w-xl mx-auto mb-14">
         Highlighting the best meals available right now.
       </p>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -71,15 +71,15 @@ const FeaturedProducts = () => {
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title">{food.donator_image}</h2>
-              <p className="text-gray-600">Quantity: {food.food_quantity}</p>
-              <p className="text-gray-500 text-sm">
+              <h2 className="card-title text-base-content">{food.donator_image}</h2>
+              <p className="text-base-content opacity-70">Quantity: {food.food_quantity}</p>
+              <p className="text-base-content opacity-60 text-sm">
                 Location: {food.pickup_location}
               </p>
               <div className="card-actions justify-end">
                 <Link
                   to={`/food/${food._id}`}
-                  className="btn bg-neutral-300 hover:bg-amber-400 text-neutral"
+                  className="btn btn-primary"
                 >
                   View Details
                 </Link>

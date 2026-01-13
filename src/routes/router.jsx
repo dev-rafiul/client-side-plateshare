@@ -11,6 +11,8 @@ import AddFood from "../Pages/Foods/AddFood";
 import ManageMyFoods from "../Pages/Foods/ManageMyFoods";
 import MyFoodRequests from "../Pages/Foods/MyFoodRequests";
 import FoodDetails from "../Pages/Foods/FoodDetails";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import About from "../Pages/About/About";
 import PrivateRoute from "./PrivateRoute";
 import FoodCard from "../components/FoodCard";
 import ErrorPage from "../Pages/ErrorPage";
@@ -31,6 +33,10 @@ export const router = createBrowserRouter([
         Component: AvailableFoods,
       },
       {
+        path: "/about",
+        Component: About,
+      },
+      {
         path: "/login",
         Component: Login,
       },
@@ -40,7 +46,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/profile",
-        Component: Profile,
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/search-food",

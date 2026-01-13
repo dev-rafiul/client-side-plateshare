@@ -5,11 +5,11 @@ import { Outlet } from 'react-router';
 
 const MainLayout = () => {
     return (
-        <div className='min-h-screen bg-base-200 text-base-content'>
+        <div className='min-h-screen bg-base-100 text-base-content'>
             
             <Navbar></Navbar>
 
-            <section>
+            <section className="bg-base-100">
                 <Outlet></Outlet>
             </section>
 

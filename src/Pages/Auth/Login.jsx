@@ -57,7 +57,7 @@ setTimeout(() => navigate("/"), 500);
 
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-b from-[#fdfcfb] to-[#e2d1c3] px-4">
+    <div className="min-h-screen flex items-center justify-center  px-4">
       <div className="w-full max-w-md bg-white/70 backdrop-blur-md rounded-2xl shadow-lg p-8">
         <h2 className="text-2xl font-semibold text-center text-gray-800">
           Welcome Back

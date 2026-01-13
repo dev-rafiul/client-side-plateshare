@@ -32,7 +32,7 @@ const heroSlides = [
 
 const HeroSection = () => {
   return (
-    <div>
+    <div className="bg-base-100">
       <section className="m-20 w-full mx-auto relative">
         <Swiper
           modules={[Autoplay, Pagination]}
@@ -69,7 +69,7 @@ bg-gradient-to-b from-black/40 via-black/30 to-black/60 rounded-xl"
                     initial="hidden"
                     animate="visible"
                     transition={{ delay: 0.6, duration: 1.8 }}
-                    className="text-lg md:text-lg text-amber-200 dark:text-amber-300 max-w-xl mb-6"
+                    className="text-lg md:text-lg text-white max-w-xl mb-6"
                   >
                     {slide.desc}
                   </motion.p>
@@ -82,13 +82,13 @@ bg-gradient-to-b from-black/40 via-black/30 to-black/60 rounded-xl"
                   >
                     <Link
                       to="/availableFoods"
-                      className="btn bg-amber-400 hover:bg-amber-200 dark:bg-amber-600 dark:hover:bg-amber-500 font-bold px-6"
+                      className="btn btn-primary font-bold px-6"
                     >
                       View All Foods
                     </Link>
                     <Link
                       to="/availableFoods"
-                      className="btn bg-amber-50 hover:bg-amber-300 dark:bg-amber-900 dark:hover:bg-amber-700 dark:text-amber-200 text-black px-6"
+                      className="btn btn-secondary font-bold px-6"
                     >
                       Search Food
                     </Link>

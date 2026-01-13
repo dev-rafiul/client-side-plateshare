@@ -36,7 +36,7 @@ const AvailableFoods = () => {
         <input
           type="text"
           placeholder="Search your foods..."
-          className="input w-full max-w-md border-none rounded-full px-5 py-2"
+          className="input w-full max-w-md border-none text-black rounded-full px-5 py-2"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
@@ -51,7 +51,7 @@ const AvailableFoods = () => {
           {filteredFoods.map((food) => (
             <div
               key={food._id}
-              className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+              className=" rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
             >
               <img
                 src={food.food_image}
@@ -101,7 +101,7 @@ const AvailableFoods = () => {
                     transition
                   "
                 >
-                  View Details
+                  View Details   . . .
                 </Link>
               </div>
             </div>
