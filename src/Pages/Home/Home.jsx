@@ -24,7 +24,7 @@ const Home = () => {
 
       <OurMission></OurMission>
 
-      <ThemeTest />
+      {/* <ThemeTest /> */}
       
     </div>
   );
