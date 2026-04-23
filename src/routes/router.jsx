@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 
 import MainLayout from "../layouts/MainLayout";
+import DashboardLayout from "../layouts/DashboardLayout";
 import Home from "../Pages/Home/Home";
 import AvailableFoods from "../Pages/Foods/AvailableFoods";
 import Login from "../Pages/Auth/Login";
@@ -11,6 +12,7 @@ import ManageMyFoods from "../Pages/Foods/ManageMyFoods";
 import MyFoodRequests from "../Pages/Foods/MyFoodRequests";
 import FoodDetails from "../Pages/Foods/FoodDetails";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import DashboardHome from "../Pages/Dashboard/DashboardHome";
 import About from "../Pages/About/About";
 import PrivateRoute from "./PrivateRoute";
 import FoodCard from "../components/FoodCard";
@@ -20,7 +22,6 @@ export const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
-    // errorElement: Error404,
     children: [
       {
         index: true,
@@ -52,42 +53,9 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path: "/dashboard",
-        element: (
-          <PrivateRoute>
-            <Dashboard />
-          </PrivateRoute>
-        ),
-      },
-      {
         path: "/search-food",
         Component: FoodCard,
       },
-      {
-        path: "/add-food",
-        element: (
-          <PrivateRoute>
-            <AddFood />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/manage-my-foods",
-        element: (
-          <PrivateRoute>
-            <ManageMyFoods />
-          </PrivateRoute>
-        ),
-      },
-      {
-        path: "/my-food-request",
-        element: (
-          <PrivateRoute>
-            <MyFoodRequests />
-          </PrivateRoute>
-        ),
-      },
-      
       {
         path: "/food/:id",
         element: (
@@ -97,6 +65,32 @@ export const router = createBrowserRouter([
         ),
       },
     ],
+  },
+  {
+    path: "/dashboard",
+    element: (
+      <PrivateRoute>
+        <DashboardLayout />
+      </PrivateRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: <DashboardHome />
+      },
+      {
+        path: "add-food",
+        element: <AddFood />
+      },
+      {
+        path: "manage-foods", 
+        element: <ManageMyFoods />
+      },
+      {
+        path: "my-requests",
+        element: <MyFoodRequests />
+      }
+    ]
   },
   { 
     path: "/*", 

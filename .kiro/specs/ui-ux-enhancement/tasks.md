@@ -149,7 +149,7 @@ This implementation plan transforms the PlateShare food sharing application into
 - [ ] 10. Checkpoint - Public Pages Complete
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 11. Dashboard Layout Implementation
+- [x] 11. Dashboard Layout Implementation
   - Create new DashboardLayout component with sidebar and top navigation
   - Implement responsive sidebar with collapsible functionality
   - Add profile dropdown with required menu items
@@ -164,7 +164,7 @@ This implementation plan transforms the PlateShare food sharing application into
   - **Property 29: Dashboard Layout Structure**
   - **Validates: Requirements 9.3, 9.4, 9.5, 9.6**
 
-- [ ] 12. Dashboard Overview Page
+- [x] 12. Dashboard Overview Page
   - Create dashboard home page with overview cards
   - Implement dynamic charts using Chart.js or similar library
   - Add dynamic data tables populated from backend

@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../Context/AuthProvider";
 import { useTheme } from "../Context/ThemeProvider";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sun, Moon, Menu, User, Settings, LogOut, Plus, List, FileText } from "lucide-react";
+import { Sun, Moon, Menu, User, LogOut, Plus, List, FileText, Home } from "lucide-react";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
-  const { theme, toggleTheme, isDark } = useTheme();
+  const { toggleTheme, isDark } = useTheme();
 
   // Navigation link styling with design system colors
   const navLinkStyle = ({ isActive }) =>
@@ -31,9 +31,9 @@ const Navbar = () => {
   const protectedLinks = [
     { to: "/", label: "Home" },
     { to: "/availableFoods", label: "Available Foods" },
-    { to: "/add-food", label: "Add Food" },
-    { to: "/manage-my-foods", label: "Manage Foods" },
-    { to: "/my-food-request", label: "My Requests" }
+    { to: "/dashboard", label: "Dashboard" },
+    { to: "/dashboard/add-food", label: "Add Food" },
+    { to: "/dashboard/manage-foods", label: "Manage Foods" }
   ];
 
   // Get appropriate links based on authentication state
@@ -42,9 +42,10 @@ const Navbar = () => {
   // Profile dropdown menu items
   const profileMenuItems = [
     { to: "/profile", label: "Profile", icon: User },
-    { to: "/add-food", label: "Add Food", icon: Plus },
-    { to: "/manage-my-foods", label: "Manage Foods", icon: List },
-    { to: "/my-food-request", label: "My Requests", icon: FileText }
+    { to: "/dashboard", label: "Dashboard", icon: Home },
+    { to: "/dashboard/add-food", label: "Add Food", icon: Plus },
+    { to: "/dashboard/manage-foods", label: "Manage Foods", icon: List },
+    { to: "/dashboard/my-requests", label: "My Requests", icon: FileText }
   ];
 
   return (

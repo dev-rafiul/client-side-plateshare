@@ -107,7 +107,7 @@ const ManageMyFoods = () => {
         </p>
       ) : (
         <div className="overflow-x-auto">
-          <table className="table table-zebra w-full">
+          <table className="table w-full">
             <thead>
               <tr className="bg-base-200">
                 <th>Image</th>
@@ -161,50 +161,56 @@ const ManageMyFoods = () => {
 
       {selectedFood && (
         <dialog open className="modal modal-bottom sm:modal-middle">
-          <div className="modal-box">
+          <div className="modal-box text-black">
             <h3 className="font-bold text-xl mb-4">Update Food</h3>
             <form onSubmit={handleUpdate} className="space-y-4">
               <input
                 name="food_name"
                 defaultValue={selectedFood.food_name}
-                className="input input-bordered w-full"
+                placeholder="Food Name"
+                className="input input-bordered border-b border-black w-full"
                 required
               />
               <input
                 name="food_image"
+                placeholder="food image url"
                 defaultValue={selectedFood.food_image}
-                className="input input-bordered w-full"
+                className="input input-bordered border-b border-black w-full"
                 required
               />
               <input
                 name="food_quantity"
                 type="number"
+                placeholder="Food Quantity"
                 defaultValue={selectedFood.food_quantity}
-                className="input input-bordered w-full"
+                className="input input-bordered border-b border-black w-full"
                 required
               />
               <input
                 name="pickup_location"
                 defaultValue={selectedFood.pickup_location}
-                className="input input-bordered w-full"
+                placeholder="Pickup Location"
+                className="input input-bordered border-b border-black w-full"
                 required
               />
               <input
                 name="expire_date"
                 type="date"
+                placeholder="Expire Date"
                 defaultValue={selectedFood.expire_date.split("T")[0]}
-                className="input input-bordered w-full"
+                className="input input-bordered border-b border-black w-full"
                 required
               />
               <textarea
                 name="additional_notes"
+                placeholder="Additional Notes"
                 defaultValue={selectedFood.additional_notes || ""}
                 className="textarea textarea-bordered w-full"
                 rows="3"
               />
 
               <div className="modal-action">
-                <button type="submit" className="btn btn-success text-white">
+                <button type="submit" className="btn btn-success text-black">
                   Save Changes
                 </button>
                 <button

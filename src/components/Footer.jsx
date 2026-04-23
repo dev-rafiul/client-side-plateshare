@@ -68,7 +68,7 @@ const Footer = () => {
           <div className="flex gap-4 text-xl">
             
   <a
-    href="https://x.com/home"
+    href="https://x.com/rafiulX"
     target="_blank"
     rel="noopener noreferrer"
     className="hover:text-[#b48518] transition"
@@ -77,7 +77,7 @@ const Footer = () => {
   </a>
 
   <a
-    href="https://github.com/rafiul040"
+    href="https://github.com/dev-rafiul"
     target="_blank"
     rel="noopener noreferrer"
     className="hover:text-[#b48518] transition"
@@ -86,7 +86,7 @@ const Footer = () => {
   </a>
 
   <a
-    href="https://www.facebook.com/rafiulislam22"
+    href="https://www.facebook.com/devrafiul0"
     target="_blank"
     rel="noopener noreferrer"
     className="hover:text-[#b48518] transition"

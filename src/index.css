@@ -144,7 +144,6 @@ body {
   --bc: #171717;
 }
 
-/* Ensure all bg-base-* classes work properly */
 [data-theme="plateshare_dark"] .bg-base-100 {
   background-color: #1f1f1f !important;
 }
@@ -169,7 +168,6 @@ body {
   background-color: #e5e5e5 !important;
 }
 
-/* Ensure text colors work properly */
 [data-theme="plateshare_dark"] .text-base-content {
   color: #ffffff !important;
 }
@@ -178,14 +176,14 @@ body {
   color: #171717 !important;
 }
 
-/* Smooth theme transitions */
+
 * {
   transition-property: background-color, border-color, color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 200ms;
 }
 
-/* Custom scrollbar for better UX */
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -201,5 +199,7 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-neutral;
 }
-/* Additional theme fixes for better compatibility */
-/* [data-theme="plateshare_dark"] */
+
+
+
+

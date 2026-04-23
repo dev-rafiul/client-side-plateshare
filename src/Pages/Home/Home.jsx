@@ -4,7 +4,6 @@ import HeroSection from "./HeroSection";
 import FeaturedProducts from "./FeaturedProducts";
 import HowItWorks from './HowItWorks';
 import OurMission from './OurMission';
-import ThemeTest from '../../components/ThemeTest';
 
 const Home = () => {
   
@@ -24,7 +23,6 @@ const Home = () => {
 
       <OurMission></OurMission>
 
-      {/* <ThemeTest /> */}
       
     </div>
   );
